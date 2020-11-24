@@ -10,7 +10,10 @@
   </head>
 
   <body>
-    Bonjour <%= @current_user.name if @current_user %>
+    <header>
+      Bonjour <%= @current_user.name if @current_user %>
+      <%= link_to "Sign out", '/sign_out', method: :delete %>
+    </header>
     <%= yield %>
   </body>
 </html>
