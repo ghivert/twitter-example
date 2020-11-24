@@ -20,7 +20,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to tweets_path
     else
-      redirect_to '/tweets/new', notice: 'Wrong'
+      redirect_to new_tweet_path, notice: 'Wrong'
     end
   end
 
@@ -29,9 +29,9 @@ class TweetsController < ApplicationController
 
   def update
     if @tweet.update(tweet_params)
-      redirect_to '/tweets'
+      redirect_to tweets_path
     else
-      redirect_to "/tweets/#{tweet.id}/edit", notice: 'Wrong'
+      redirect_to tweet_path(@tweet), notice: 'Wrong'
     end
   end
 
@@ -43,13 +43,13 @@ class TweetsController < ApplicationController
 
   def authorize_user
     if @current_user.nil?
-      redirect_to '/sign_in'
+      redirect_to sign_in_path
     end
   end
 
   def redirect_user_if_no_tweet
     if @tweet.nil? || @current_user.id != @tweet.user.id
-      redirect_to '/tweets'
+      redirect_to tweets_path
     end
   end
 

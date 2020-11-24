@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   delete '/sign_out',   to: 'sessions#sign_out'
 
   get    '/tweets',     to: 'tweets#index'
-  get    '/tweets/new', to: 'tweets#new'
+  get    '/tweets/new', to: 'tweets#new', as: 'new_tweet'
   post   '/tweets',     to: 'tweets#create'
-  get    '/tweets/:id/edit', to: 'tweets#edit'
+  get    '/tweets/:id/edit', to: 'tweets#edit', as: 'tweet'
   post   '/tweets/:id/edit', to: 'tweets#update'
 end

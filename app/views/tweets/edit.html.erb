@@ -1,5 +1,5 @@
 <%= notice %>
-<%= form_for :tweet, action: '/tweets/' + @tweet.id.to_s do |f| %>
+<%= form_for @tweet do |f| %>
   <div>
     <%= f.label :content %>
     <%= f.text_area :content %>
