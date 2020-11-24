@@ -1,0 +1,17 @@
+<% for tweet in @tweets %>
+  <div style="padding: 10px; border: 1px solid #ddd; margin: 10px; border-radius: 5px;">
+    <div class="">
+      Content
+    </div>
+    <div class="">
+      <%= tweet.content %>
+    </div>
+    <div style="padding: 20px"></div>
+    <div class="">
+      Username
+    </div>
+    <div class="">
+      <%= tweet.user.name %>
+    </div>
+  </div>
+<% end %>
