@@ -4,8 +4,14 @@ class User < ApplicationRecord
 
   # L’email ne doit pas être nul, et doit être unique dans toute la base.
   validates :email, presence: true, uniqueness: true
+
+  # L’utilisateur a plusieurs tweets avec une colonne user_id dans la table Tweets.
+  has_many :tweets
 end
 
 # "azerty"
 # "password" => "anrsitdl86438rnauiten"
 # bcrypt("password") # => "anrsitdl86438rnauiten"
+
+user = User.last
+user.tweets
