@@ -1,0 +1,10 @@
+<%= notice %>
+<%= form_for :tweet, action: '/tweets/' + @tweet.id.to_s do |f| %>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

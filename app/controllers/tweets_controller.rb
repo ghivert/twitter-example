@@ -1,5 +1,7 @@
 class TweetsController < ApplicationController
-  before_action :authorize_user, only: [:new, :create]
+  before_action :authorize_user, only: [:new, :create, :edit, :update]
+  before_action :set_tweet, only: [:edit, :update]
+  before_action :redirect_user_if_no_tweet, only: [:edit, :update]
 
   def index
     @tweets = Tweet.all
@@ -22,11 +24,32 @@ class TweetsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @tweet.update(tweet_params)
+      redirect_to '/tweets'
+    else
+      redirect_to "/tweets/#{tweet.id}/edit", notice: 'Wrong'
+    end
+  end
+
   private
+
+  def set_tweet
+    @tweet = Tweet.find_by(id: params[:id])
+  end
 
   def authorize_user
     if @current_user.nil?
       redirect_to '/sign_in'
+    end
+  end
+
+  def redirect_user_if_no_tweet
+    if @tweet.nil? || @current_user.id != @tweet.user.id
+      redirect_to '/tweets'
     end
   end
 
