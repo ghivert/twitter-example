@@ -32,6 +32,27 @@ model :user do |t|
   t.string :password_digest
 ```
 
+# Modifier le frontend
+
+`views/users/_form.html.erb`
+
+# Créer un SessionsController
+
+```bash
+rails generate controller Sessions
+```
+
+# Router les bonnes routes
+
+```ruby
+get  '/sign_in', to: 'sessions#sign_in_form'
+post '/sign_in', to: 'sessions#sign_in'
+```
+
+# Écrire les fonctions `sessions#sign_in_form` et `sessions#sign_in`
+
+# Écrire le front `views/sessions/sign_in_form.html.erb`
+
 # Lancer le serveur
 
 ```bash
