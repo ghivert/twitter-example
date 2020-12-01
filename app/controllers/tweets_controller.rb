@@ -14,35 +14,8 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
   end
 
-  def extract_hashtags
-    @tweet.content.split(' ').filter do |elem|
-      elem.start_with?('#')
-    end
-  end
-
-  def get_hashtags_models(hashtags)
-    tags_return = []
-    for tag in hashtags
-      fetched_tag = Tag.find_by(label: tag)
-      if fetched_tag
-        tags_return.push(fetched_tag)
-      else
-        new_tag = Tag.create(label: tag)
-        tags_return.push(new_tag)
-      end
-    end
-    tags_return
-  end
-
   def create
     @tweet = Tweet.new(tweet_params)
-    hashtags = extract_hashtags
-    # Lire les tags pour récupérer le tag correspondant en base de données
-    tags = get_hashtags_models(hashtags)
-    # Lier les deux Tweet <-> Tag
-    for tag in tags
-      @tweet.tags.push(tag)
-    end
     @tweet.user = @current_user
     if @tweet.save
       redirect_to tweets_path
