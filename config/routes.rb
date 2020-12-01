@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get    '/tweets',     to: 'tweets#index'
   get    '/tweets/new', to: 'tweets#new', as: 'new_tweet'
   post   '/tweets',     to: 'tweets#create'
-  get    '/tweets/:id/edit', to: 'tweets#edit', as: 'tweet'
-  patch  '/tweets/:id/edit', to: 'tweets#update'
+  get    '/tweets/:id', to: 'tweets#show', as: 'tweet'
+  get    '/tweets/:id/edit', to: 'tweets#edit', as: 'edit_tweet'
+  patch  '/tweets/:id', to: 'tweets#update'
 end

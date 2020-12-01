@@ -1,3 +1,4 @@
+<%= link_to "New tweet", new_tweet_path %>
 <% for tweet in @tweets %>
   <div style="padding: 10px; border: 1px solid #ddd; margin: 10px; border-radius: 5px;">
     <div class="">
@@ -22,6 +23,6 @@
         <%= tag.label %>
       <% end %>
     </div>
-    <%= link_to "Edit", tweet_path(tweet) %>
+    <%= link_to "Edit", edit_tweet_path(tweet) %>
   </div>
 <% end %>

@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
     if @tweet.update(tweet_params)
       redirect_to tweets_path
     else
-      redirect_to tweet_path(@tweet), notice: 'Wrong'
+      redirect_to edit_tweet_path(@tweet), notice: 'Wrong'
     end
   end
 

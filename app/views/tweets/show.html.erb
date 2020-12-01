@@ -1,0 +1,25 @@
+<div style="padding: 10px; border: 1px solid #ddd; margin: 10px; border-radius: 5px;">
+  <div class="">
+    Content
+  </div>
+  <div class="">
+    <%= @tweet.content %>
+  </div>
+  <div style="padding: 20px"></div>
+  <div class="">
+    Username
+  </div>
+  <div class="">
+    <%= @tweet.user.name %>
+  </div>
+  <div style="padding: 20px"></div>
+  <div class="">
+    Tags
+  </div>
+  <div class="">
+    <% for tag in @tweet.tags %>
+      <%= tag.label %>
+    <% end %>
+  </div>
+  <%= link_to "Edit", edit_tweet_path(@tweet) %>
+</div>
