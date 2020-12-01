@@ -13,5 +13,14 @@
     <div class="">
       <%= tweet.user.name %>
     </div>
+    <div style="padding: 20px"></div>
+    <div class="">
+      Tags
+    </div>
+    <div class="">
+      <% for tag in tweet.tags %>
+        <%= tag.label %>
+      <% end %>
+    </div>
   </div>
 <% end %>

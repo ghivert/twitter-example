@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_141935) do
+ActiveRecord::Schema.define(version: 2020_12_01_111103) do
+
+  create_table "tags", force: :cascade do |t|
+    t.string "label", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags_tweets", id: false, force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "tweet_id", null: false
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.string "content"
