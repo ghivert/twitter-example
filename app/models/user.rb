@@ -8,10 +8,3 @@ class User < ApplicationRecord
   # L’utilisateur a plusieurs tweets avec une colonne user_id dans la table Tweets.
   has_many :tweets
 end
-
-# "azerty"
-# "password" => "anrsitdl86438rnauiten"
-# bcrypt("password") # => "anrsitdl86438rnauiten"
-
-user = User.last
-user.tweets

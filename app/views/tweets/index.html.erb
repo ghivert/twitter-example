@@ -23,6 +23,15 @@
         <%= tag.label %>
       <% end %>
     </div>
+    <div style="padding: 20px"></div>
+    <div class="">
+      Mentions
+    </div>
+    <div class="">
+      <% for usertag in tweet.usertags %>
+        <%= usertag.user.username %>
+      <% end %>
+    </div>
     <%= link_to "Edit", edit_tweet_path(tweet) %>
   </div>
 <% end %>
