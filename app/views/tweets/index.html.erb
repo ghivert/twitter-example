@@ -33,5 +33,8 @@
       <% end %>
     </div>
     <%= link_to "Edit", edit_tweet_path(tweet) %>
+    <% if tweet.user == @current_user %>
+      <%= link_to "Delete", delete_tweet_path(tweet), method: :delete %>
+    <% end %>
   </div>
 <% end %>

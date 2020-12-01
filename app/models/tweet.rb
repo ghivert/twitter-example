@@ -5,6 +5,14 @@ class Tweet < ApplicationRecord
   before_save :update_tags
   before_save :update_usertags
 
+  default_scope { where(deleted_at: nil) }
+  scope :active, -> { where(deleted_at: nil) }
+  scope :deleted, -> { where.not(deleted_at: nil) }
+
+  def self.all_but_deleted
+    Tweet.where(deleted_at: nil)
+  end
+
   def update_tags
     self.tags = extract_hashtags
   end

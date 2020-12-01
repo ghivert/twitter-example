@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
-  before_action :authorize_user, only: [:new, :create, :edit, :update]
-  before_action :set_tweet, only: [:edit, :update]
-  before_action :redirect_user_if_no_tweet, only: [:edit, :update]
+  before_action :authorize_user, only: [:new, :create, :edit, :update, :delete]
+  before_action :set_tweet, only: [:edit, :update, :delete]
+  before_action :redirect_user_if_no_tweet, only: [:edit, :update, :delete]
 
   def index
     @tweets = Tweet.all
@@ -33,6 +33,11 @@ class TweetsController < ApplicationController
     else
       redirect_to edit_tweet_path(@tweet), notice: 'Wrong'
     end
+  end
+
+  def delete
+    @tweet.update(deleted_at: Time.now)
+    redirect_to tweets_path
   end
 
   private
