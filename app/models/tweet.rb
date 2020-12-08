@@ -31,7 +31,7 @@ class Tweet < ApplicationRecord
     for tag in self.usertags
       user = tag.user
       if user.notifications_enabled
-        NotificationMailer.with(user: user).when_tagged
+        NotificationMailer.with(user: user).when_tagged.deliver_later
       end
     end
   end
