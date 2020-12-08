@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_155958) do
+ActiveRecord::Schema.define(version: 2020_12_08_103430) do
 
   create_table "tags", force: :cascade do |t|
     t.string "label", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_155958) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.boolean "notifications_enabled", default: true
   end
 
   create_table "usertags", force: :cascade do |t|

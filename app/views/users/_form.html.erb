@@ -36,6 +36,11 @@
     <%= form.password_field :password_confirmation %>
   </div>
 
+  <div class="field">
+    <%= form.label :notifications_enabled %>
+    <%= form.check_box :notifications_enabled %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
