@@ -1,0 +1,13 @@
+<h1>Tags</h1>
+
+<div class="">
+  <%= @hashtag.label %>
+</div>
+
+<div class="">
+  <% for tweet in @hashtag.tweets %>
+    <div class="">
+      <%= tweet.content %>  
+    </div>
+  <% end %>
+</div>

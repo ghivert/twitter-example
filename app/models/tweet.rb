@@ -4,14 +4,20 @@ class Tweet < ApplicationRecord
   has_and_belongs_to_many :usertags
   before_save :update_tags
   before_save :update_usertags
+  after_save  :notify_usertags
 
-  default_scope { where(deleted_at: nil) }
-  scope :active, -> { where(deleted_at: nil) }
-  scope :deleted, -> { where.not(deleted_at: nil) }
+  # default_scope { where(deleted_at: nil) }
+  #
+  # scope :active,  -> { where(deleted_at: nil) }
+  # scope :deleted, -> { where.not(deleted_at: nil) }
 
   def self.all_but_deleted
     Tweet.where(deleted_at: nil)
   end
+
+  # def update
+  #   Tweet.where(deleted_at: nil).find_by(id: id)
+  # end
 
   def update_tags
     self.tags = extract_hashtags
@@ -19,6 +25,15 @@ class Tweet < ApplicationRecord
 
   def update_usertags
     self.usertags = extract_usertags
+  end
+
+  def notify_usertags
+    for tag in self.usertags
+      user = tag.user
+      NotificationMailer
+        .with(user: user)
+        .when_tagged
+    end
   end
 
   private

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tags/show'
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -13,4 +14,6 @@ Rails.application.routes.draw do
   get    '/tweets/:id/edit', to: 'tweets#edit', as: 'edit_tweet'
   patch  '/tweets/:id', to: 'tweets#update'
   delete '/tweets/:id', to: 'tweets#delete', as: 'delete_tweet'
+
+  get     '/tags/:id',  to: 'tags#show', as: 'tag'
 end

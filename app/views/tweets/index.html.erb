@@ -20,7 +20,7 @@
     </div>
     <div class="">
       <% for tag in tweet.tags %>
-        <%= tag.label %>
+        <%= link_to tag.label, tag_path(tag) %>
       <% end %>
     </div>
     <div style="padding: 20px"></div>
